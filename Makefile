@@ -1,5 +1,5 @@
 CC := gcc
-NAME := parser
+NAME := testkit
 c_flags := -Wall -pedantic
 BD := ./build
 ID := /opt/inc
