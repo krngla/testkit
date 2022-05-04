@@ -9,6 +9,7 @@
 //Useful tools
 #define RED "\x1B[31m"
 #define GRN "\x1B[32m"
+#define YLW "\x1B[33m"
 #define WHT "\x1B[37m"
 #define RST "\x1B[0m"
 
@@ -17,10 +18,12 @@ int num_condition(int result, int expected);
 int str_condition(char * result, char * expected);
 long unsigned int str_len_condition(unsigned long int, unsigned long int len);
 extern int v_testkit_n_failed;
-extern int v_testkit_next_testid;
 
 #define teststate(result,func_name, condition, expected, variables, testid, printformat) do {\
-	printf("Test %4i %-15s ", testid, func_name);\
+	printf(YLW "Test:\t" RST);\
+	printf("%-15s", testid);\
+	printf(YLW "Testing:\t" RST);\
+	printf("%-15s\t", func_name);\
 	if (condition(result, expected)) {\
 		printf(GRN "Passed\n" RST);\
 	}\
@@ -31,8 +34,8 @@ extern int v_testkit_next_testid;
 	}\
 } while (0)
 
-#define test_numeq(funct, expected, ...) teststate(funct(__VA_ARGS__), #funct, num_condition, expected, #__VA_ARGS__, ++v_testkit_next_testid, "%i")
-#define test_streq(funct, expected, ...) teststate(funct(__VA_ARGS__), #funct, str_condition, expected, #__VA_ARGS__, ++v_testkit_next_testid, "%s")
-#define test_strlen(funct, expected, ...) teststate(strlen(funct(__VA_ARGS__)), #funct, str_len_condition, (long unsigned int)expected, #__VA_ARGS__, ++v_testkit_next_testid, "%lu")
+#define test_numeq(funct, test_id, expected, ...) teststate(funct(__VA_ARGS__), #funct, num_condition, expected, #__VA_ARGS__, test_id, "%i")
+#define test_streq(funct, test_id, expected, ...) teststate(funct(__VA_ARGS__), #funct, str_condition, expected, #__VA_ARGS__, test_id, "%s")
+#define test_strlen(funct, test_id, expected, ...) teststate(strlen(funct(__VA_ARGS__)), #funct, str_len_condition, (long unsigned int)expected, #__VA_ARGS__, test_id, "%lu")
 
 #define result ((v_testkit_n_failed == 0) ? printf(GRN "All tests passed\n" RST) : printf(RED "Tests failed: %i\n" RST, v_testkit_n_failed))

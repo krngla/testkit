@@ -7,7 +7,6 @@
 
 
 int v_testkit_n_failed = 0;
-int v_testkit_next_testid = 0;
 
 int num_condition(int result, int expected) { 
 	return result == expected;
