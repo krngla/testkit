@@ -31,15 +31,12 @@ int main() {
 	test_numeq(test_func, "test func 5", 15, 2, 3, 10);
 	test_numeq(test_func, "test func 6", 16, 2, 3, 11);
 	test_numeq(test_func, "test func 7", 17, 2, 3, 12);
+	test_numeq(test_func, "test func 7", 17, 2, 3, 12);
 	test_streq(conc, "conc eq 1", "hello, world!", "hello, ", "world!");
-	//test_streq(conc, "hello, world!", "hello,", "world!");
 	test_streq(rep, "rep eq 1", "hello, hello, hello, ", "hello, ", 3);
 	test_strlen(rep, "rep len 1", 21, "hello, ", 3);
-	printf("%s\n", rep("hello, ", 3));
 	//level1
-	result;
-
-
+	result();
 
 	return 0;
 }

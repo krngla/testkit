@@ -38,4 +38,4 @@ extern int v_testkit_n_failed;
 #define test_streq(funct, test_id, expected, ...) teststate(funct(__VA_ARGS__), #funct, str_condition, expected, #__VA_ARGS__, test_id, "%s")
 #define test_strlen(funct, test_id, expected, ...) teststate(strlen(funct(__VA_ARGS__)), #funct, str_len_condition, (long unsigned int)expected, #__VA_ARGS__, test_id, "%lu")
 
-#define result ((v_testkit_n_failed == 0) ? printf(GRN "All tests passed\n" RST) : printf(RED "Tests failed: %i\n" RST, v_testkit_n_failed))
+#define result() ((v_testkit_n_failed == 0) ? printf(GRN "All tests passed\n" RST) : printf(RED "Tests failed: %i\n" RST, v_testkit_n_failed))

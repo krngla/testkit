@@ -22,3 +22,4 @@ int str_len_condition(unsigned long int result, unsigned long int expected) {
 	return result == expected;
 }
 
+void * mock_callback
